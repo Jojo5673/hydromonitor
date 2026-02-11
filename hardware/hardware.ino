@@ -49,7 +49,7 @@
 
 // MQTT CLIENT CONFIG  
 static const char* pubtopic      = "620172690";                    // Add your ID number here
-static const char* subtopic[]    = {"620172690","/elet2415"};  // Array of Topics(Strings) to subscribe to
+static const char* subtopic[]    = {"620172690_sub","/elet2415"};  // Array of Topics(Strings) to subscribe to
 static const char* mqtt_server   = "www.yanacreations.com";         // Broker IP address or Domain name as a String 
 static uint16_t mqtt_port        = 1883;
 
@@ -109,19 +109,11 @@ void setup() {
   dht.begin();
   
   /* Add all other necessary sensor Initializations and Configurations here */
-  for(int x=0; x<7; x++){
-      ledArray[x] = CRGB( 240, 0, 240); // R, G, B range for each value is 0 to 255
-      FastLED.setBrightness( 200 ); // Ranges from 0 to 255
-      FastLED.show(); // Send changes to LED array
-      vTaskDelay(50 / portTICK_PERIOD_MS);
-    }
-
-    for(int x=0; x<NUM_LEDS; x++){
-      ledArray[x] = CRGB::Black;
-      FastLED.setBrightness( 200 );
-      FastLED.show();
-      vTaskDelay(50 / portTICK_PERIOD_MS);
-    }
+  for(int i=0;i<NUM_LEDS;i++){
+    ledArray[i] = CRGB::LimeGreen;
+  }
+  FastLED.setBrightness(100);
+  FastLED.show();
 
   initialize();     // INIT WIFI, MQTT & NTP 
   // vButtonCheckFunction(); // UNCOMMENT IF USING BUTTONS INT THIS LAB, THEN ADD LOGIC FOR INTERFACING WITH BUTTONS IN THE vButtonCheck FUNCTION
@@ -177,7 +169,7 @@ void vUpdate( void * pvParameters )  {
               char message[1100]  = {0};
 
               // 3. Add key:value pairs to JSon object based on above schema
-              doc["id"]         = "6200162206";
+              doc["id"]         = "620172690";
               doc["timestamp"]  = getTimeStamp();
               doc["temperature"]     = t;
               doc["humidity"]       = h;
