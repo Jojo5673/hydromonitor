@@ -50,7 +50,7 @@
 // MQTT CLIENT CONFIG  
 static const char* pubtopic      = "620172690";                    // Add your ID number here
 static const char* subtopic[]    = {"620172690","/elet2415"};  // Array of Topics(Strings) to subscribe to
-static const char* mqtt_server   = "local";         // Broker IP address or Domain name as a String 
+static const char* mqtt_server   = "www.yanacreations.com";         // Broker IP address or Domain name as a String 
 static uint16_t mqtt_port        = 1883;
 
 // WIFI CREDENTIALS
